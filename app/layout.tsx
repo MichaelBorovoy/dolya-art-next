@@ -30,7 +30,7 @@ export default function RootLayout({
       <body>
         <Header/>
         <SocialSidebar/>
-        <div className="container">
+        <div className="container pt-16 md:pt-20">
           {children}
         </div>
         

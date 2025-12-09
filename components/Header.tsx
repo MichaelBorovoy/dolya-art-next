@@ -1,16 +1,30 @@
 "use client";
 import styles from './Header.module.css'
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {FaInstagram, FaLinkedin} from 'react-icons/fa'
 import { SiBehance, SiArtstation } from "react-icons/si";
 
 const Header = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10); 
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
     return (
         <>
            {/* <header className="border-b border-[var(--color-accent-light)] bg-[var(--color-cream)]"> */}
-           <header >
+           <header className={`
+        fixed top-0 left-0 right-0 z-50 
+            bg-white
+    transition-shadow duration-300
+    ${scrolled ? "shadow-md" : ""}`}>
       <div className="container mx-auto h-16 md:h-20 flex items-center justify-between">
 
         <h1 className="text-lg md:text-xl font-semibold text-[var(--color-primary)] whitespace-nowrap">
