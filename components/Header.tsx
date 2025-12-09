@@ -6,7 +6,7 @@ import { SiBehance, SiArtstation } from "react-icons/si";
 const Header = () => {
     return (
         <>
-        <header className="h-16 md:h-20 container flex items-center justify-between">
+        <header className="h-16 md:h-20 container flex items-center justify-between ">
             <div className="text-2xl">
                 Olya Didenko
             </div>
