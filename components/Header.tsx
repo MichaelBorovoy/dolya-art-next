@@ -1,39 +1,145 @@
+"use client";
 import styles from './Header.module.css'
 import Link from 'next/link';
+import { useState } from 'react';
 import {FaInstagram, FaLinkedin} from 'react-icons/fa'
 import { SiBehance, SiArtstation } from "react-icons/si";
 
 const Header = () => {
+    const [open, setOpen] = useState(false)
     return (
         <>
-        <header className="h-16 md:h-20 container flex items-center justify-between ">
-            <div className="text-2xl">
-                Olya Didenko
+           {/* <header className="border-b border-[var(--color-accent-light)] bg-[var(--color-cream)]"> */}
+           <header >
+      <div className="container mx-auto h-16 md:h-20 flex items-center justify-between">
+
+        <h1 className="text-lg md:text-xl font-semibold text-[var(--color-primary)] whitespace-nowrap">
+          Olya Didenko
+        </h1>
+
+        <nav className="hidden md:flex">
+          <ul className="flex items-center gap-4 lg:gap-6 xl:gap-8 whitespace-nowrap text-[var(--color-charcoal)]">
+            <li>
+              <Link href="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link href="/concept-art">Concept Art</Link>
+            </li>
+            <li>
+              <Link href="/mobile-games-casino">Mobile Games/Casino</Link>
+            </li>
+            <li>
+              <Link href="/sketches">Sketches</Link>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          type="button"
+          className="md:hidden inline-flex flex-col items-center justify-center w-10 h-10 gap-[5px]"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-label="Toggle navigation"
+        >
+          <span
+            className={`block h-[2px] w-6 bg-[var(--color-charcoal)] transition-transform duration-300 ${
+              open ? "translate-y-[7px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-6 bg-[var(--color-charcoal)] transition-opacity duration-300 ${
+              open ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-6 bg-[var(--color-charcoal)] transition-transform duration-300 ${
+              open ? "-translate-y-[7px] -rotate-45" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden border-t border-[var(--color-accent-light)] bg-[var(--color-cream)]">
+          <nav className="container mx-auto py-4 flex flex-col gap-3 text-[var(--color-charcoal)]">
+            <Link
+              href="/portfolio"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              Portfolio
+            </Link>
+            <Link
+              href="/concept-art"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              Concept Art
+            </Link>
+            <Link
+              href="/mobile-games-casino"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              Mobile Games/Casino
+            </Link>
+            <Link
+              href="/sketches"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              Sketches
+            </Link>
+            <Link
+              href="/about"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="py-1"
+              onClick={() => setOpen(false)}
+            >
+              Contact
+            </Link>
+
+            <div className="mt-3 flex items-center gap-4">
+              <a
+                href="https://www.behance.net/olgadidenkoart"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#1769FF]"
+              >
+                <SiBehance className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/olya_sangeet?igsh=dTVjbTFkbGVhYmtp&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#E4405F]"
+              >
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/olga-didenko-art/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0A66C2]"
+              >
+                <FaLinkedin className="w-5 h-5" />
+              </a>
             </div>
-            <nav>
-                <ul className='flex items-center gap-4 text-2xl'>
-                    <li><Link href="/">Portfolio</Link></li>
-                    <li>Games</li>
-                    <li>Watercolor</li>
-                    <li>About</li>
-                    <li>Contact Me</li>
-                </ul>
-            </nav>
-            <div className="flex items-center justify-between gap-4 text-2xl">
-                <a  href="https://www.behance.net/olgadidenkoart" target="_blank" className="text-[#1769FF] hover:text-[#2e7dff] transition-colors duration-200">
-                   <SiBehance className="w-6 h-6"/> 
-                </a>
-                {/* <a  href="https://artstation.com" target="_blank">
-                    <SiArtstation />
-                </a> */}
-                <a href="https://www.instagram.com/olya_sangeet?igsh=dTVjbTFkbGVhYmtp&utm_source=qr" target="_blank" className="text-[#E4405F] hover:text-[#ff5f80] transition-colors duration-200">
-                    <FaInstagram className="w-6 h-6" />
-                </a>
-                <a href="https://www.linkedin.com/in/olga-didenko-art/" target="_blank" className="text-[#0A66C2] hover:text-[#1a7ef0] transition-colors duration-200">
-                    <FaLinkedin  className="w-6 h-6 " />
-                </a>
-            </div>
-        </header>
+          </nav>
+        </div>
+      )}
+    </header>
     </> 
     );
 }
