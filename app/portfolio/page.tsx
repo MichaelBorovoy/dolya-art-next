@@ -1,3 +1,4 @@
+import GalleryPreview from "@/components/GalleryPreview";
 import Image from "next/image";
 
 const images = [
@@ -16,7 +17,8 @@ export default function PortfolioPage() {
         Portfolio
       </h1>
 
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+        <GalleryPreview images={images} />
+      {/* <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
   {images.map((img) => (
     <div key={img.src} className="mb-6 break-inside-avoid">
       <Image
@@ -28,7 +30,7 @@ export default function PortfolioPage() {
       />
     </div>
   ))}
-</div>
+</div> */}
     </main>
   );
 }
