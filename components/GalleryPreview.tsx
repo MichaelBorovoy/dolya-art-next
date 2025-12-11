@@ -12,6 +12,8 @@ type GalleryPreviewProps = {
   images: GalleryImage[];
 };
 
+
+
 export default function GalleryPreview({ images }: GalleryPreviewProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
