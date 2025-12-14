@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import SocialSidebar from "@/components/SocialSidebar";
 import Providers from "./api/auth/[...nextauth]/providers";
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <SocialSidebar/>
           <div className="container pt-16 md:pt-20">
             {children}
+            <Analytics/>
           </div>
         </Providers>
       </body>
